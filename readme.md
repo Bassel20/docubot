@@ -1,6 +1,6 @@
 # DocuBot Local
 
-A personal, offline document assistant — like ChatGPT for your own notes, PDFs, and
+A personal, offline document assistant. like ChatGPT for your own notes, PDFs, and
 research papers. It runs entirely on your machine using a local LLM (Mistral via
 Ollama) and a local vector database (ChromaDB), so your documents never leave
 your computer.
