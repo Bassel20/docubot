@@ -1,0 +1,6 @@
+pdfplumber
+transformers
+sentence-transformers
+chromadb
+flask
+requests
