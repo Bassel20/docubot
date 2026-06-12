@@ -24,7 +24,7 @@ your computer.
 | Component | File | Role |
 | --- | --- | --- |
 | PDF ingestion | `pdfTextExtract.py` | Extracts text from PDFs, cleans it, and splits it into overlapping token-based chunks |
-| Embeddings | `embeddings.py` *(planned)* | Embeds chunks with `all-MiniLM-L6-v2` and stores them in ChromaDB |
+| Embeddings | `embeddings.py` | Embeds chunks with `all-MiniLM-L6-v2` and stores them in ChromaDB |
 | RAG core | `rag.py` *(planned)* | Retrieves relevant chunks for a question and queries Ollama (Mistral) for an answer |
 | API | `app.py` *(planned)* | Flask server exposing a `/query` endpoint |
 | Examples | `example_usage.py` *(planned)* | Sample script for ingesting documents and asking questions |
@@ -51,14 +51,24 @@ python pdfTextExtract.py Dataset_pdf/
 This produces `ai_chunks.json`, a list of `{"text": ..., "source": ...}` chunks
 ready to be embedded and stored in ChromaDB.
 
+Embed the chunks and store them in a local ChromaDB collection:
+
+```bash
+python embeddings.py
+```
+
+This reads `ai_chunks.json`, embeds each chunk with `all-MiniLM-L6-v2`, and
+upserts it into a persistent ChromaDB collection at `chroma_db/`.
+
 ## Status
 
-Early development. PDF extraction and chunking (`pdfTextExtract.py`) are working.
-Embeddings, RAG core, and the API server are not yet implemented.
+Early development. PDF extraction/chunking (`pdfTextExtract.py`) and embedding
+storage (`embeddings.py`) are working. RAG core and the API server are not yet
+implemented.
 
 ## Roadmap
 
-- [ ] `embeddings.py`: embed chunks and persist them in ChromaDB
+- [x] `embeddings.py`: embed chunks and persist them in ChromaDB
 - [ ] `rag.py`: retrieve relevant chunks and query Ollama for an answer
 - [ ] `app.py`: Flask API (`POST /query`)
 - [ ] `example_usage.py`: end-to-end ingestion + query example
