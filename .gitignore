@@ -1,1 +1,12 @@
-.claude/settings.local.json
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+
+# Project data & generated files
+ai_chunks.json
+chroma_db/
+
+# Flask
+*.log
